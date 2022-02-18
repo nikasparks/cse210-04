@@ -18,3 +18,25 @@ Enhancement Ideas:
 - Enhanced game play and game over messages.
 - Enhanced gem, rock and player representation (colors or better symbols)
 
+Director:
+- create score calc  = Arnaldo
+- Display score  = Arnaldo
+
+Actor:
+- Determine how artifact falls (next move)   = John
+- artifact x random number and stays the same for the decent  = John
+
+Point:
+- Adjust the artifact y postion   =  Monika
+- Adjust y for robot = max y  = Monika
+
+Artifact:
+- Convert message to score value for score calc  =  Camron
+
+Main:
+- Change Caption to "Greed" =  Monika
+
+Cast:
+- Nothing at this point
+
+- Make gem disapear?
