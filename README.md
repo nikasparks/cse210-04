@@ -16,11 +16,11 @@
 - director.py: a file containing all info relating to the "Director" class.
 - keyboard_service.py: a file that intereprets user's keyboard input using the "KeyboardService" class.
 - video_service.py: a file that draws the game window and shows the user any information they need using the "VideoService" class.
-- 
-- 
-- 
-- 
-- 
+- point.py: a file containing all info relating to the "Point" class.
+- color.py: a file containing all info relating to the "Color" class.
+- actor.py: a file containing all info relating to the "Actor" class.
+- artifact.py: a file containing all info relating to the "Artifact" class.
+- cast.py: a file containing all info relating to the "Cast" class.
 
 ## Technologies Used:
 - The only software required for this program is Python. You can download it here: https://www.python.org
