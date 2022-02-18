@@ -26,6 +26,9 @@
 - The only software required for this program is Python. You can download it here: https://www.python.org
 - The collaboration was done via github: https://github.com/nikasparks/cse210-04.git
 
+## How to Start:
+- Open __ main__.py file using python 3.
+
 ## Game Instructions:
 - Gems (*) and rocks (o) randomly appear and fall from the top of the screen.
 - The player (#) can move left or right along the bottom of the screen.
