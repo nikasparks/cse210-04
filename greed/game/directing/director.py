@@ -1,6 +1,8 @@
 import random
 import time
 from game.casting.artifact import Artifact
+from game.casting.actor import Actor
+from game.casting.cast import Cast
 from game.shared.color import Color
 from game.shared.point import Point
 
@@ -23,6 +25,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        cast = Cast()
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -50,7 +53,7 @@ class Director:
 
     def _create_shapes(self, cast):
         text = chr(random.choice([42, 48]))  #Use only squares and asterisks for artifact shapes  
-        x = random.randint(1, 60 - 1)  #Distribute artifacts randomly across the screen horizontally, 
+        x = random.randint(1, 60 - 1)  # Distribute artifacts randomly across the screen horizontally, 
                                         # hard coding COLS here to be 60, can use constant or parameter later
         y = 1  # For Greed, need to start y at the top row
         position = Point(x, y)
@@ -85,11 +88,16 @@ class Director:
         robot.move_next(max_x, max_y)
         
         for artifact in artifacts:  # check for every artifact on the screen
-            if robot.get_position().equals(artifact.get_position()):  #if robot is in same spot as artifact, 
-                                                                    # using method that artifact inherits from actor
+
+            # Need to add some Y increment (15?) to position of artifacts
+            
+            if robot.get_position().equals(artifact.get_position()):  
                 score = artifact.get_message()                                      # create score calc
                 banner.set_text(score)    
-        
+
+            # if x of artifact >= max Y, then we need to remove it from cast
+                # using cast.remove_actor("artifacts", artifact)
+
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         
