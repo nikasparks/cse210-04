@@ -26,6 +26,7 @@ class Director:
         self._keyboard_service = keyboard_service
         self._video_service = video_service
         cast = Cast()
+        self._score = 0     #created overall score to be displayed and updated in methods
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -92,8 +93,8 @@ class Director:
             # Need to add some Y increment (15?) to position of artifacts
             
             if robot.get_position().equals(artifact.get_position()):  
-                score = artifact.get_message()                                      # create score calc
-                banner.set_text(score)    
+                self._score += artifact.get_message(artifact)                    # create score calc, update score
+                banner.set_text(self._score)    
 
             # if x of artifact >= max Y, then we need to remove it from cast
                 # using cast.remove_actor("artifacts", artifact)

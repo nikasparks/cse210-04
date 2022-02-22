@@ -1,7 +1,7 @@
 from game.casting.actor import Actor
 
 
-class Artifact(Actor):  # Artifact inherits from Actor
+class Artifact(Actor):
     """
     An item of cultural or historical interest. 
     
@@ -12,15 +12,14 @@ class Artifact(Actor):  # Artifact inherits from Actor
     """
     def __init__(self):
         super().__init__()
-        self._message = ""
         
-    def get_message(self):
-        """Gets the artifact's message.
-        
-        Returns:
-            string: The message.
+    def get_message(self, item):
+        """Gets the symbol, determins whether to increase or decrease score.
         """
-        return self._message
+        if item == chr(42):
+            return 1
+        else:
+            return -1
     
     def set_message(self, message):
         """Updates the message to the given one.
