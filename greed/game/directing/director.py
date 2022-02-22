@@ -1,3 +1,5 @@
+import pyray 
+from game.shared.point import Point
 class Director:
     """A person who directs the game. 
     
@@ -17,6 +19,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self._score = 0
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -55,11 +58,23 @@ class Director:
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
+
         
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
-                score = artifact.get_message()                                      # create score calc
-                banner.set_text(score)    
+                #score calc
+                point = artifact.get_message()                                  
+                self._score += point
+                #self._score = artifact.get_message(score)
+                artifact.move_next(random.int())
+
+        banner.set_text(f"score {self._score}")
+        # pyray.draw_text(f"Score {self._score}",10 , 0, 15, pyray.WHITE)
+        
+        # for artifact in artifacts:
+        #     if robot.get_position().equals(artifact.get_position()):
+        #         score = artifact.get_message()                                      # create score calc
+        #         banner.set_text(score)    
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.

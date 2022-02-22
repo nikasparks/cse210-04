@@ -24,11 +24,11 @@ ROWS = 40
 CAPTION = "Greed"
 # DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 40
-
+DEFAULT_ARTIFACTS = 10
+message = 0
 
 def main():
-    
+    global message
     # create the cast
     cast = Cast()
     
@@ -56,20 +56,26 @@ def main():
     # with open(DATA_PATH) as file:
     #     data = file.read()
     #     messages = data.splitlines()
-
+    
     for n in range(DEFAULT_ARTIFACTS):
-        
-        text = chr(random.choice([42, 48]))
+        char_text = [42, 48]
+        symbol = random.choice(char_text)
+        text = chr(symbol)
         # message = messages[n]
+        if symbol == 42:
+            message = 1
+        elif symbol == 48:
+            message = -1
 
         x = random.randint(1, COLS - 1)
-        y = random.randint(1, ROWS - 1)
+        y = 1
+        #y = random.randint(1, ROWS - 1)  #take out?
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
 
-        r = random.randint(10, 255)
-        g = random.randint(10, 255)
-        b = random.randint(10, 255)
+        r = random.randint(30, 255)
+        g = random.randint(30, 255)
+        b = random.randint(30, 255)
         color = Color(r, g, b)
         
         artifact = Artifact()
@@ -77,7 +83,7 @@ def main():
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        # artifact.set_message(message)
+        artifact.set_message(message)
         cast.add_actor("artifacts", artifact)
     
     # start the game
