@@ -1,7 +1,7 @@
 from game.casting.actor import Actor
 
 
-class Artifact(Actor):
+class Artifact(Actor):  # Artifact inherits from Actor
     """
     An item of cultural or historical interest. 
     
