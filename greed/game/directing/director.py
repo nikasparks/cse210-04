@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import pyray
-=======
 import random
 import time
 from game.casting.artifact import Artifact
@@ -9,7 +6,6 @@ from game.casting.cast import Cast
 from game.shared.color import Color
 from game.shared.point import Point
 
->>>>>>> 582945bfc4000b03afb2e0a8386234e6cc26d582
 class Director:
      
     """A person who directs the game. 
@@ -93,7 +89,6 @@ class Director:
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
-<<<<<<< HEAD
         score = 0
         for artifact in artifacts:
             
@@ -104,20 +99,6 @@ class Director:
                 #score = artifact.get_message(score)
                 #banner.set_text(score)
         pyray.draw_text(f"score {score}",10 , 0, 15, pyray.WHITE)
-=======
-        
-        for artifact in artifacts:  # check for every artifact on the screen
-
-            # Need to add some Y increment (15?) to position of artifacts
-            
-            if robot.get_position().equals(artifact.get_position()):  
-                self._score += artifact.get_message(artifact)                    # create score calc, update score
-                banner.set_text(self._score)    
-
-            # if x of artifact >= max Y, then we need to remove it from cast
-                # using cast.remove_actor("artifacts", artifact)
-
->>>>>>> 582945bfc4000b03afb2e0a8386234e6cc26d582
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         
