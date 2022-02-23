@@ -1,4 +1,5 @@
 import pyray 
+import random
 from game.shared.point import Point
 class Director:
     """A person who directs the game. 
@@ -66,9 +67,9 @@ class Director:
                 point = artifact.get_message()                                  
                 self._score += point
                 #self._score = artifact.get_message(score)
-                artifact.move_next(random.int())
+                artifact.move_next(random.randint(2,),2)
 
-        banner.set_text(f"score {self._score}")
+        banner.set_text(f"Score: {self._score}")
         # pyray.draw_text(f"Score {self._score}",10 , 0, 15, pyray.WHITE)
         
         # for artifact in artifacts:
