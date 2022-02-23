@@ -45,6 +45,10 @@ class Director:
         velocity = self._keyboard_service.get_direction()
         robot.set_velocity(velocity)        
 
+    def advance(self):
+            self.position.y += self.velocity.dy
+            self.position.x += self.velocity.dx
+
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.
         
@@ -62,20 +66,19 @@ class Director:
 
         
         for artifact in artifacts:
+            
+
+
             if robot.get_position().equals(artifact.get_position()):
                 #score calc
                 point = artifact.get_message()                                  
                 self._score += point
                 #self._score = artifact.get_message(score)
-                artifact.move_next(random.randint(2,),2)
+                art_position = artifact.move_next(random.randint(1,59),1)
+                art_position = art_position.scale(15)
 
         banner.set_text(f"Score: {self._score}")
-        # pyray.draw_text(f"Score {self._score}",10 , 0, 15, pyray.WHITE)
-        
-        # for artifact in artifacts:
-        #     if robot.get_position().equals(artifact.get_position()):
-        #         score = artifact.get_message()                                      # create score calc
-        #         banner.set_text(score)    
+
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
