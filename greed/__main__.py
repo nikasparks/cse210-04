@@ -60,7 +60,7 @@ def main():
     for n in range(DEFAULT_ARTIFACTS):
         
         text = chr(random.choice([42, 48]))
-        # message = messages[n]
+        #message = messages[n]
 
         x = random.randint(1, COLS - 1)
         y = random.randint(1, ROWS - 1)

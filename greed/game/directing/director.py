@@ -1,4 +1,6 @@
+import pyray
 class Director:
+     
     """A person who directs the game. 
     
     The responsibility of a Director is to control the sequence of play.
@@ -7,7 +9,7 @@ class Director:
         _keyboard_service (KeyboardService): For getting directional input.
         _video_service (VideoService): For providing video output.
     """
-
+    
     def __init__(self, keyboard_service, video_service):
         """Constructs a new Director using the specified keyboard and video services.
         
@@ -47,6 +49,7 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
+        
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
@@ -55,12 +58,16 @@ class Director:
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
-        
+        score = 0
         for artifact in artifacts:
+            
             if robot.get_position().equals(artifact.get_position()):
-                score = artifact.get_message()                                      # create score calc
-                banner.set_text(score)    
+                # create score calc                                   
+                score += 1
         
+                #score = artifact.get_message(score)
+                #banner.set_text(score)
+        pyray.draw_text(f"score {score}",10 , 0, 15, pyray.WHITE)
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         
