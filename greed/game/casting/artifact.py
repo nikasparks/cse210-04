@@ -14,12 +14,12 @@ class Artifact(Actor):
         super().__init__()
         
     def get_message(self, item):
-        """Gets the symbol, determins whether to increase or decrease score.
+        """Gets the artifact's message which is it's point value.
+        
+        Returns:
+            int: The point value.
         """
-        if item == chr(42):
-            return 1
-        else:
-            return -1
+
     
     def set_message(self, message):
         """Updates the message to the given one.

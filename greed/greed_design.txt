@@ -39,4 +39,6 @@ Main:
 Cast:
 - Nothing at this point
 
-- Make gem disapear?
+Todo:
+- Make disapear or recycle = mostly done
+- Fall down screen
