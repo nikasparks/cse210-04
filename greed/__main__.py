@@ -22,9 +22,8 @@ FONT_SIZE = 15
 COLS = 60
 ROWS = 40
 CAPTION = "Greed"
-# DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 10
+DEFAULT_ARTIFACTS = 40
 message = 0
 
 def main():
@@ -52,32 +51,28 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
-    # create the artifacts
-    # with open(DATA_PATH) as file:
-    #     data = file.read()
-    #     messages = data.splitlines()
-    
+    #create Gems(*) and Rocks(O)
     for n in range(DEFAULT_ARTIFACTS):
-        char_text = [42, 48]
+        #randomly create a gem or a rock
+        char_text = [42, 79]
         symbol = random.choice(char_text)
         text = chr(symbol)
-        # message = messages[n]
+        #give it a point value
         if symbol == 42:
             message = 1
-        elif symbol == 48:
+        elif symbol == 79:
             message = -1
-
+        #set starting point
         x = random.randint(1, COLS - 1)
-        y = random.randint(-4,1)
-        #y = random.randint(1, ROWS - 1)  #take out?
+        y = random.randint(1, ROWS - 11)
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
-
-        r = random.randint(30, 255)
-        g = random.randint(30, 255)
-        b = random.randint(30, 255)
+        #set color
+        r = random.randint(40, 250)
+        g = random.randint(40, 250)
+        b = random.randint(40, 250)
         color = Color(r, g, b)
-        
+        #store in artifacts group
         artifact = Artifact()
         artifact.set_text(text)
         artifact.set_font_size(FONT_SIZE)

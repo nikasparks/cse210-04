@@ -1,3 +1,4 @@
+from ast import And
 import pyray 
 import random
 from game.shared.point import Point
@@ -41,9 +42,10 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
+        artifacts = cast.get_actors("artifacts")
         robot = cast.get_first_actor("robots")
         velocity = self._keyboard_service.get_direction()
-        robot.set_velocity(velocity)        
+        robot.set_velocity(velocity)
 
     def advance(self):
             self.position.y += self.velocity.dy
@@ -59,31 +61,34 @@ class Director:
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
 
-        banner.set_text("")
+        # banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
 
         
         for artifact in artifacts:
-            art_v_x = artifact._position.get_x()
-            art_v_y = (random.randint(1,3)*15)
-            art_vel = (art_v_x,art_v_y)
-            artifact.set_velocity(art_vel)
-            # artifact.move_down(1,max_y)
+            #Set a y velocity for artifact (actor method)
+            artifact.set_velocity(Point(0,15))
+            #Move artifact using that velocity (actor method)
             artifact.move_next(max_x, max_y)
 
-
+            #if robot and artifact are in the same squre. (point method and actor method)
             if robot.get_position().equals(artifact.get_position()):
-                #score calc
+                #get point value from artifact. calc new score. (artifact method)
                 point = artifact.get_message()                                  
                 self._score += point
-                #self._score = artifact.get_message(score)
-                artifact.set_position((random.randint(1,59)*15),(random.randint(1,3)*15))
+                #Assign a new starting position (actor method)
+                artifact.set_position(Point((random.randint(1,59)*15),(random.randint(0, 10)*15)))
+                #send artifact to new position (actor method)
                 artifact.move_next(max_x, max_y)
-            # if artifact._position.get_y() >= max_y:
-            #     artifact.move_next((random.randint(1,59)*15),random.randint(-3,-1)*15)    
-
+            #or if artifact and robot are on the same row and different coloums. (artifact reaches the bottom of screen with touching the robot)
+            elif (artifact._position.get_y() == robot._position.get_y()):
+                #Assign a new starting position
+                artifact.set_position(Point((random.randint(1,59)*15),(random.randint(0, 10)*15)))
+                #send artifact to new position
+                artifact.move_next(max_x, max_y)    
+        #post updated score
         banner.set_text(f"Score: {self._score}")
 
         
