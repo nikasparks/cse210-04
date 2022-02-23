@@ -6,7 +6,7 @@
 - Greed is a game in which the player seeks to gather as many falling gems as possible. The game continues as long as the player wants more! This project was created for CSE 210 at BYU Idaho.
 
 ## Project Structure:
-- geed: folder housing all the parts for the game and where the __ main__.py and game design file live.
+- greed: folder housing all the parts for the game and where the __ main__.py and game design file live.
 - __ main__.py: contains our main function utilizing the classes in different files and builds the game window definitions for video_service.py to use in drawing the game.
 - game: a folder containing the files for the game to run.
 - casting: a folder containing the files for the to create the different interactive pieces of the game.

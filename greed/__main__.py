@@ -1,6 +1,4 @@
-import os
 import random
-import time
 
 from game.casting.actor import Actor
 from game.casting.artifact import Artifact
@@ -14,7 +12,7 @@ from game.services.video_service import VideoService
 from game.shared.color import Color
 from game.shared.point import Point
 
-
+# Setup constants
 FRAME_RATE = 12
 MAX_X = 900
 MAX_Y = 600
