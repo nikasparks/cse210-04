@@ -98,7 +98,7 @@ class Director:
         
                 #score = artifact.get_message(score)
                 #banner.set_text(score)
-        pyray.draw_text(f"score {score}",10 , 0, 15, pyray.WHITE)
+        banner.set_text(f"score {score}")
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         

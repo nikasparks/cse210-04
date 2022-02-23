@@ -58,17 +58,10 @@ def main():
     #     data = file.read()
     #     messages = data.splitlines()
 
-<<<<<<< HEAD
-    for n in range(DEFAULT_ARTIFACTS):
-        
-        text = chr(random.choice([42, 48]))
-        #message = messages[n]
-=======
     # for n in range(DEFAULT_ARTIFACTS):
             
     #     text = chr(random.choice([42, 48]))  #Use only squares and asterisks for artifact shapes
     #     # message = messages[n]
->>>>>>> 582945bfc4000b03afb2e0a8386234e6cc26d582
 
     #     x = random.randint(1, COLS - 1)  #Distribute artifacts randomly across the screen horizontally
     #     # y = random.randint(1, ROWS - 1)  #Distribute artifacts randomly in vertical spacing, this is for RFK, not for Greed
