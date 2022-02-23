@@ -1,4 +1,3 @@
-import pyray 
 import random
 from game.shared.point import Point
 class Director:
