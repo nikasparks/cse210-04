@@ -76,6 +76,12 @@ class Actor:
         y = (self._position.get_y() + self._velocity.get_y()) % max_y
         self._position = Point(x, y)
 
+    def move_down(self, v, max_y):
+        
+        x = (self._position.get_x())
+        y = (self._position.get_y() + (v*15)) 
+        self._position = Point(x, y)
+
     def set_color(self, color):
         """Updates the color to the given one.
         

@@ -66,7 +66,12 @@ class Director:
 
         
         for artifact in artifacts:
-            
+            art_v_x = artifact._position.get_x()
+            art_v_y = (random.randint(1,3)*15)
+            art_vel = (art_v_x,art_v_y)
+            artifact.set_velocity(art_vel)
+            # artifact.move_down(1,max_y)
+            artifact.move_next(max_x, max_y)
 
 
             if robot.get_position().equals(artifact.get_position()):
@@ -74,8 +79,10 @@ class Director:
                 point = artifact.get_message()                                  
                 self._score += point
                 #self._score = artifact.get_message(score)
-                art_position = artifact.move_next(random.randint(1,59),1)
-                art_position = art_position.scale(15)
+                artifact.set_position((random.randint(1,59)*15),(random.randint(1,3)*15))
+                artifact.move_next(max_x, max_y)
+            # if artifact._position.get_y() >= max_y:
+            #     artifact.move_next((random.randint(1,59)*15),random.randint(-3,-1)*15)    
 
         banner.set_text(f"Score: {self._score}")
 

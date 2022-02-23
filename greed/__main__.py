@@ -42,7 +42,7 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(MAX_Y / 2) 
+    y = int(MAX_Y-15) 
     position = Point(x, y)
 
     robot = Actor()
@@ -68,7 +68,7 @@ def main():
             message = -1
 
         x = random.randint(1, COLS - 1)
-        y = 1
+        y = random.randint(-4,1)
         #y = random.randint(1, ROWS - 1)  #take out?
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
