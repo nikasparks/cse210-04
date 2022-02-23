@@ -23,13 +23,12 @@ FONT_SIZE = 15
 COLS = 60   # Columns * cell size = MAX_X
 ROWS = 40   # Rows * cell size = MAX_Y
 CAPTION = "Greed"
-# DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 40   # The number of stones and gems distributed across the screen
-
+DEFAULT_ARTIFACTS = 40
+message = 0
 
 def main():
-    
+    global message
     # create the cast
     cast = Cast()
     
@@ -43,7 +42,7 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(MAX_Y / 2) 
+    y = int(MAX_Y-15) 
     position = Point(x, y)
 
     robot = Actor()
@@ -53,34 +52,35 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
-    # create the artifacts
-    # with open(DATA_PATH) as file:
-    #     data = file.read()
-    #     messages = data.splitlines()
-
-    # for n in range(DEFAULT_ARTIFACTS):
-            
-    #     text = chr(random.choice([42, 48]))  #Use only squares and asterisks for artifact shapes
-    #     # message = messages[n]
-
-    #     x = random.randint(1, COLS - 1)  #Distribute artifacts randomly across the screen horizontally
-    #     # y = random.randint(1, ROWS - 1)  #Distribute artifacts randomly in vertical spacing, this is for RFK, not for Greed
-    #     y = 1  # For Greed, need to start y at the top row
-    #     position = Point(x, y)
-    #     position = position.scale(CELL_SIZE)
-
-    #     r = random.randint(10, 255)
-    #     g = random.randint(10, 255)
-    #     b = random.randint(10, 255)
-    #     color = Color(r, g, b)
-            
-    #     artifact = Artifact()
-    #     artifact.set_text(text)
-    #     artifact.set_font_size(FONT_SIZE)
-    #     artifact.set_color(color)
-    #     artifact.set_position(position)
-    #     # artifact.set_message(message)
-    #     cast.add_actor("artifacts", artifact)
+    #create Gems(*) and Rocks(O)
+    for n in range(DEFAULT_ARTIFACTS):
+        #randomly create a gem or a rock
+        char_text = [42, 79]
+        symbol = random.choice(char_text)
+        text = chr(symbol)
+        #give it a point value
+        if symbol == 42:
+            message = 1
+        elif symbol == 79:
+            message = -1
+        #set starting point
+        x = random.randint(1, COLS - 1)
+        y = random.randint(1, ROWS - 11)
+        position = Point(x, y)
+        position = position.scale(CELL_SIZE)
+        #set color
+        r = random.randint(40, 250)
+        g = random.randint(40, 250)
+        b = random.randint(40, 250)
+        color = Color(r, g, b)
+        #store in artifacts group
+        artifact = Artifact()
+        artifact.set_text(text)
+        artifact.set_font_size(FONT_SIZE)
+        artifact.set_color(color)
+        artifact.set_position(position)
+        artifact.set_message(message)
+        cast.add_actor("artifacts", artifact)
     
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
