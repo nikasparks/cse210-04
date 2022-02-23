@@ -19,7 +19,7 @@ class Actor:
     def __init__(self):
         """Constructs a new Actor."""
         self._text = ""
-        self._font_size = 15
+        self._font_size = 15   # Font size is really set in main. Is this needed?
         self._color = Color(255, 255, 255)
         self._position = Point(0, 0)
         self._velocity = Point(0, 0)
@@ -75,7 +75,7 @@ class Actor:
         x = (self._position.get_x() + self._velocity.get_x()) % max_x
         y = (self._position.get_y() + self._velocity.get_y()) % max_y
         self._position = Point(x, y)
-
+    
     def set_color(self, color):
         """Updates the color to the given one.
         
