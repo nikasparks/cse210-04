@@ -42,3 +42,4 @@
 - Monika Meyers: nikasparks@mac.com
 - Jonathan Woster: jonathanwoster@gmail.com
 - Arnaldo Suarez: sua21007@byui.edu
+- Wylee Everett: eve20003@byui.edu
