@@ -11,7 +11,7 @@ class Director:
         _video_service (VideoService): For providing video output.
     """
     
-    def __init__(self, keyboard_service, video_service):
+    def __init__(self, keyboard_service, video_service, cell_size, col, row):
         """Constructs a new Director using the specified keyboard and video services.
         
         Args:
@@ -20,6 +20,9 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self._cell_size = cell_size
+        self._col = col
+        self._row = row
         self._score = 0     #created overall score to be displayed and updated in methods
         
     def start_game(self, cast):
@@ -67,7 +70,7 @@ class Director:
         
         for artifact in artifacts:
             #Set a y velocity for artifact (actor method)
-            artifact.set_velocity(Point(0,30))
+            artifact.set_velocity(Point(0,self._cell_size))
             #Move artifact using that velocity (actor method)
             artifact.move_next(max_x, max_y)
 
@@ -77,15 +80,13 @@ class Director:
                 point = artifact.get_message()                                  
                 self._score += point
                 #Assign a new starting position (actor method)
-                artifact.set_position(Point((random.randint(1,59)*30),(random.randint(0, 10)*30)))
-                #send artifact to new position (actor method)
-                # artifact.move_next(max_x, max_y)
+                artifact.set_position(Point((random.randint(1,self._col-1)*self._cell_size),(random.randint(0, int(self._row/7))*self._cell_size)))
+
             #or if artifact and robot are on the same row and different coloums. (artifact reaches the bottom of screen with touching the robot)
             elif (artifact._position.get_y() == robot._position.get_y()):
                 #Assign a new starting position
-                artifact.set_position(Point((random.randint(1,59)*30),(random.randint(0, 10)*30)))
-                #send artifact to new position
-                # artifact.move_next(max_x, max_y)    
+                artifact.set_position(Point((random.randint(1,self._col-1)*self._cell_size),(random.randint(0, int(self._row/7))*self._cell_size)))
+   
         #post updated score
         banner.set_text(f"Score: {self._score}")
 

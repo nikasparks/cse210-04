@@ -1,3 +1,4 @@
+from imaplib import Int2AP
 import random
 
 from game.casting.actor import Actor
@@ -13,13 +14,13 @@ from game.shared.color import Color
 from game.shared.point import Point
 
 # Setup constants
-FRAME_RATE = 8
+FRAME_RATE = 7
 MAX_X = 1200
 MAX_Y = 900
 CELL_SIZE = 30
 FONT_SIZE = 30
-COLS = 40   # Columns * cell size = MAX_X
-ROWS = 30   # Rows * cell size = MAX_Y
+COLS = int(MAX_X/CELL_SIZE)   # Columns * cell size = MAX_X
+ROWS = int(MAX_Y/FONT_SIZE)     # Rows * cell size = MAX_Y
 CAPTION = "Greed"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 50
@@ -40,7 +41,7 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(MAX_Y-30) 
+    y = int(MAX_Y-CELL_SIZE) 
     position = Point(x, y)
 
     robot = Actor()
@@ -63,7 +64,7 @@ def main():
             message = -1
         #set starting point
         x = random.randint(1, COLS - 1)
-        y = random.randint(1, ROWS - 1)
+        y = random.randint(1, int(ROWS/7))
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
         #set color
@@ -83,7 +84,7 @@ def main():
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
     video_service = VideoService(CAPTION, MAX_X, MAX_Y, CELL_SIZE, FRAME_RATE)
-    director = Director(keyboard_service, video_service)
+    director = Director(keyboard_service, video_service, CELL_SIZE, COLS, ROWS)
     director.start_game(cast)
 
 
