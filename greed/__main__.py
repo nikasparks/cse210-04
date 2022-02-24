@@ -14,12 +14,12 @@ from game.shared.point import Point
 
 # Setup constants
 FRAME_RATE = 12
-MAX_X = 1800
-MAX_Y = 1200
+MAX_X = 1200
+MAX_Y = 900
 CELL_SIZE = 30
 FONT_SIZE = 30
-COLS = 30   # Columns * cell size = MAX_X
-ROWS = 20   # Rows * cell size = MAX_Y
+COLS = 40   # Columns * cell size = MAX_X
+ROWS = 30   # Rows * cell size = MAX_Y
 CAPTION = "Greed"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 60
