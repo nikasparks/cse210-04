@@ -22,7 +22,7 @@ COLS = 40   # Columns * cell size = MAX_X
 ROWS = 30   # Rows * cell size = MAX_Y
 CAPTION = "Greed"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 60
+DEFAULT_ARTIFACTS = 50
 message = 0
 
 def main():
