@@ -14,15 +14,15 @@ from game.shared.point import Point
 
 # Setup constants
 FRAME_RATE = 12
-MAX_X = 900
-MAX_Y = 600
-CELL_SIZE = 15
-FONT_SIZE = 15
-COLS = 60   # Columns * cell size = MAX_X
-ROWS = 40   # Rows * cell size = MAX_Y
+MAX_X = 1800
+MAX_Y = 1200
+CELL_SIZE = 30
+FONT_SIZE = 30
+COLS = 30   # Columns * cell size = MAX_X
+ROWS = 20   # Rows * cell size = MAX_Y
 CAPTION = "Greed"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 40
+DEFAULT_ARTIFACTS = 60
 message = 0
 
 def main():
@@ -40,7 +40,7 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(MAX_Y-15) 
+    y = int(MAX_Y-30) 
     position = Point(x, y)
 
     robot = Actor()
@@ -63,7 +63,7 @@ def main():
             message = -1
         #set starting point
         x = random.randint(1, COLS - 1)
-        y = random.randint(1, ROWS - 11)
+        y = random.randint(1, ROWS - 1)
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
         #set color
