@@ -67,7 +67,7 @@ class Director:
         
         for artifact in artifacts:
             #Set a y velocity for artifact (actor method)
-            artifact.set_velocity(Point(0,15))
+            artifact.set_velocity(Point(0,30))
             #Move artifact using that velocity (actor method)
             artifact.move_next(max_x, max_y)
 
@@ -77,15 +77,15 @@ class Director:
                 point = artifact.get_message()                                  
                 self._score += point
                 #Assign a new starting position (actor method)
-                artifact.set_position(Point((random.randint(1,59)*15),(random.randint(0, 10)*15)))
+                artifact.set_position(Point((random.randint(1,59)*30),(random.randint(0, 10)*30)))
                 #send artifact to new position (actor method)
-                artifact.move_next(max_x, max_y)
+                # artifact.move_next(max_x, max_y)
             #or if artifact and robot are on the same row and different coloums. (artifact reaches the bottom of screen with touching the robot)
             elif (artifact._position.get_y() == robot._position.get_y()):
                 #Assign a new starting position
-                artifact.set_position(Point((random.randint(1,59)*15),(random.randint(0, 10)*15)))
+                artifact.set_position(Point((random.randint(1,59)*30),(random.randint(0, 10)*30)))
                 #send artifact to new position
-                artifact.move_next(max_x, max_y)    
+                # artifact.move_next(max_x, max_y)    
         #post updated score
         banner.set_text(f"Score: {self._score}")
 

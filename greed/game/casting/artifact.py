@@ -13,13 +13,13 @@ class Artifact(Actor):
     def __init__(self):
         super().__init__()
         
-    def get_message(self, item):
+    def get_message(self):
         """Gets the artifact's message which is it's point value.
         
         Returns:
             int: The point value.
         """
-
+        return self._message
     
     def set_message(self, message):
         """Updates the message to the given one.
