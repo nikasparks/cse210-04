@@ -79,6 +79,7 @@ def main():
         artifact.set_color(color)
         artifact.set_position(position)
         artifact.set_message(message)
+        artifact.set_velocity(Point(0,CELL_SIZE))
         cast.add_actor("artifacts", artifact)
     
     # start the game

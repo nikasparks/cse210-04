@@ -70,7 +70,7 @@ class Director:
         
         for artifact in artifacts:
             #Set a y velocity for artifact (actor method)
-            artifact.set_velocity(Point(0,self._cell_size))
+            # artifact.set_velocity(Point(0,self._cell_size))
             #Move artifact using that velocity (actor method)
             artifact.move_next(max_x, max_y)
 
@@ -83,7 +83,7 @@ class Director:
                 artifact.set_position(Point((random.randint(1,self._col-1)*self._cell_size),(random.randint(0, int(self._row/7))*self._cell_size)))
 
             #or if artifact and robot are on the same row and different coloums. (artifact reaches the bottom of screen with touching the robot)
-            elif (artifact._position.get_y() == robot._position.get_y()):
+            elif (artifact.get_position().get_y() == robot.get_position().get_y()):
                 #Assign a new starting position
                 artifact.set_position(Point((random.randint(1,self._col-1)*self._cell_size),(random.randint(0, int(self._row/7))*self._cell_size)))
    
